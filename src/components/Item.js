@@ -60,9 +60,16 @@ const useStyles = makeStyles({
         justifyContent: 'center'
     },
     amountSpan:{
-        margin:'.4rem 0rem'
+        margin:'.4rem 0rem',
+        backgroundColor:'#c1c4c6',
+        width:'2rem',
+        display:'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        border:'.05rem solid'
     },
     inc_dec_btn:{
+        cursor:'pointer',
         transitionDuration: '.2s',
         '&:hover':{
             backgroundColor:'rgba(0,0,0,.2)'

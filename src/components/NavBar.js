@@ -8,15 +8,15 @@ const useStyles = makeStyles({
   container: {
     backgroundColor: "var(--clr-primary)",
     height: "3rem",
-    width:'100%',
+    width: "100%",
     display: "flex",
     justifyContent: "center",
-},
-innerContainer: {
+  },
+  innerContainer: {
     display: "flex",
     alignItems: "center",
-      justifyContent: "space-between",
-      width:'60%'
+    justifyContent: "space-between",
+    width: "60%",
   },
   logo: {
     fontSize: "1.5rem",

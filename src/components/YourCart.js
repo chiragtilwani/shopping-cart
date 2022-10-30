@@ -12,7 +12,8 @@ const useStyles = makeStyles({
         boxShadow: '2rem 1rem 3rem .1rem rgb(0 0 0 / 15%)',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        marginTop:'3rem',
     },
     h2: {
         width: '100%',
@@ -28,24 +29,30 @@ const useStyles = makeStyles({
         width: '100%',
         display: 'flex',
         alignItems: 'center',
-        justifyContent:'space-between',
+        justifyContent: 'space-between',
     },
-    totalBill_h2:{
-        margin:'0 2rem'
+    totalBill_h2: {
+        margin: '0 2rem'
+    },
+    listContainer: {
+        overflowY: 'scroll',
+        maxHeight: '90%',
+        '&::-webkit-scrollbar':{
+            width:'0rem'
+        }
     }
 })
 
 const YourCart = () => {
     const classes = useStyles()
-    const items = useSelector(state => state.cart.cartItems)
-    const total = useSelector(state => state.cart.total)
-    console.log(items)
+    const { cartItems, total } = useSelector(state => state.cart)
+    console.log(cartItems)
     return (
         <div className={classes.container}>
             <div style={{ height: '80%' }}>
                 <h2 className={classes.h2}>Your Cart</h2>
-                <div style={{ overflowY: 'scroll', maxHeight: '90%' }}>
-                    {items.map(item => <Item key={item.id} {...item} />)}
+                <div className={classes.listContainer}>
+                    {cartItems.map(item => <Item key={item.id} {...item} />)}
                 </div>
 
             </div>
