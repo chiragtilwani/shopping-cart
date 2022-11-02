@@ -2,6 +2,9 @@ import {makeStyles} from '@mui/styles'
 import ClearCartBtn from './components/ClearCartBtn';
 import NavBar from './components/NavBar'
 import YourCart from './components/YourCart';
+import {calculateTotal} from './features/cart/cartSlice'
+import {useEffect} from 'react'
+import {useDispatch,useSelector} from 'react-redux'
 
 const useStyles =makeStyles({
   container :{
@@ -13,12 +16,20 @@ const useStyles =makeStyles({
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingBottom:'2.5rem',
-    overflowY:'scroll'
+    overflowY:'scroll',
+    '&::-webkit-scrollbar':{
+      width:'0rem'
+  }
   }
 })
 
 function App() {
   const classes =useStyles()
+  const { cartItems} = useSelector((state) => state.cart);
+  const dispatch=useDispatch()
+
+  useEffect(()=>{dispatch(calculateTotal())},[cartItems])
+
   return <div className={classes.container}>
     <NavBar/>
     <YourCart/>

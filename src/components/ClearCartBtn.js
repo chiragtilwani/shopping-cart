@@ -1,5 +1,7 @@
 import React from 'react'
 import {makeStyles} from '@mui/styles'
+import {useDispatch} from 'react-redux'
+import {clearCart} from '../features/cart/cartSlice'
 
 const useStyles = makeStyles({
     clearCart:{
@@ -26,8 +28,9 @@ const useStyles = makeStyles({
 
 const ClearCartBtn = () => {
     const classes= useStyles()
+    const dispatch=useDispatch()
   return (
-    <div className={classes.clearCart}>Clear Cart</div>
+    <div className={classes.clearCart} onClick={()=>{dispatch(clearCart())}}>Clear Cart</div>
   )
 }
 

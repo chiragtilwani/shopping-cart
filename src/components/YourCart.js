@@ -36,16 +36,24 @@ const useStyles = makeStyles({
     },
     listContainer: {
         overflowY: 'scroll',
-        maxHeight: '90%',
+        height: '90%',
+        display: 'flex',
+        flexDirection: 'column',
+        // alignItems: 'center',
+        // justifyContent: 'center',
         '&::-webkit-scrollbar':{
             width:'0rem'
         }
+    },
+    emptyCart_h2:{
+        textAlign:'center',
+        margin:"auto auto"
     }
 })
 
 const YourCart = () => {
     const classes = useStyles()
-    const { cartItems, total } = useSelector(state => state.cart)
+    const { cartItems, total,amount } = useSelector(state => state.cart)
     console.log(cartItems)
     return (
         <div className={classes.container}>
@@ -53,12 +61,13 @@ const YourCart = () => {
                 <h2 className={classes.h2}>Your Cart</h2>
                 <div className={classes.listContainer}>
                     {cartItems.map(item => <Item key={item.id} {...item} />)}
+                    {amount===0 && <h2  className={classes.emptyCart_h2}>IS EMPTY !</h2>}
                 </div>
 
             </div>
             <div className={classes.h3Container}>
                 <h3 className={classes.totalBill_h2}>Total</h3>
-                <h3 className={classes.totalBill_h2}>${total}</h3>
+                <h3 className={classes.totalBill_h2}>${total.toFixed(2)}</h3>
             </div>
         </div>
     )

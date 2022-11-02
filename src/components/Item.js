@@ -2,6 +2,8 @@ import React from 'react'
 import { makeStyles } from '@mui/styles'
 import {IoMdAdd} from 'react-icons/io'
 import {GrFormSubtract} from 'react-icons/gr'
+import {useDispatch} from 'react-redux'
+import {removeItem,increase,decrease} from '../features/cart/cartSlice'
 
 const useStyles = makeStyles({
     container: {
@@ -9,6 +11,9 @@ const useStyles = makeStyles({
         backgroundColor: 'var(--clr-primary-light)',
         height: '5rem',
         borderBottom: '.2rem solid grey',
+        '&:hover':{
+            backgroundColor: '#617d98'
+        }
     },
     innerContainer: {
         width: '100%',
@@ -71,6 +76,11 @@ const useStyles = makeStyles({
     inc_dec_btn:{
         cursor:'pointer',
         transitionDuration: '.2s',
+        backgroundColor:'transparent',
+        display:'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        border:'none',
         '&:hover':{
             backgroundColor:'rgba(0,0,0,.2)'
         }
@@ -79,6 +89,7 @@ const useStyles = makeStyles({
 
 const Item = (props) => {
     const classes = useStyles()
+    const dispatch = useDispatch()
     return (
         <div className={classes.container}>
             <div className={classes.innerContainer}>
@@ -88,13 +99,14 @@ const Item = (props) => {
                 <div className={classes.titlePriceContainer}>
                     <span className={classes.title}>{props.title}</span>
                     <span className={classes.price}>${props.price}</span>
-                    <button className={classes.removeBtn}>Remove</button>
+                    <button className={classes.removeBtn} onClick={()=>{dispatch(removeItem(props.id))}}>Remove</button>
                 </div>
             </div>
             <div className={classes.inc_dec_amnt}>
-                <IoMdAdd  className={classes.inc_dec_btn}/>
+                
+                <button className={classes.inc_dec_btn} onClick={()=>{dispatch(increase(props.id))}}><IoMdAdd /></button>
                 <span  className={classes.amountSpan}>{props.amount}</span>
-                <GrFormSubtract className={classes.inc_dec_btn}/>
+                <button className={classes.inc_dec_btn} onClick={()=>{dispatch(decrease(props.id))}} disabled={props.amount===1?true:false}><GrFormSubtract /></button>
             </div>
         </div>
     )
