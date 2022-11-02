@@ -39,7 +39,7 @@ const NavBar = () => {
           </span>
         </span>
         <span className={classes.cart}>
-          <Badge badgeContent={amount} color="primary">
+          <Badge badgeContent={amount} color="primary" style={{cursor: "pointer"}} title={`${amount} items in cart`}>
             <BsFillCartFill style={{ fontSize: "1.3rem" }} />
           </Badge>
         </span>

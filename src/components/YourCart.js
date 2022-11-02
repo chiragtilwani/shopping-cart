@@ -2,6 +2,7 @@ import React from 'react'
 import { makeStyles } from '@mui/styles'
 import { useSelector } from 'react-redux'
 import Item from './Item'
+import cartImg from '../cartImg.png'
 
 const useStyles = makeStyles({
     container: {
@@ -55,13 +56,14 @@ const YourCart = () => {
     const classes = useStyles()
     const { cartItems, total,amount } = useSelector(state => state.cart)
     console.log(cartItems)
+    
     return (
         <div className={classes.container}>
             <div style={{ height: '80%' }}>
                 <h2 className={classes.h2}>Your Cart</h2>
                 <div className={classes.listContainer}>
                     {cartItems.map(item => <Item key={item.id} {...item} />)}
-                    {amount===0 && <h2  className={classes.emptyCart_h2}>IS EMPTY !</h2>}
+                    {amount===0 && <h2  className={classes.emptyCart_h2}><img src={cartImg}/> IS EMPTY !</h2>}
                 </div>
 
             </div>
