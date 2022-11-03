@@ -31,7 +31,7 @@ const useStyles = makeStyles({
 const ClearCartBtn = (props) => {
   const classes = useStyles()
   const { amount } = useSelector((state) => state.cart);
-console.log(amount)
+  console.log(amount)
   return (
     <button className={classes.clearCart} onClick={props.handleClickOpen} disabled={amount === 0 ? true : false}>Clear Cart</button>
   )

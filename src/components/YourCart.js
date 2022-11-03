@@ -14,7 +14,7 @@ const useStyles = makeStyles({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
-        marginTop:'3rem',
+        marginTop: '3rem',
     },
     h2: {
         width: '100%',
@@ -42,28 +42,28 @@ const useStyles = makeStyles({
         flexDirection: 'column',
         // alignItems: 'center',
         // justifyContent: 'center',
-        '&::-webkit-scrollbar':{
-            width:'0rem'
+        '&::-webkit-scrollbar': {
+            width: '0rem'
         }
     },
-    emptyCart_h2:{
-        textAlign:'center',
-        margin:"auto auto"
+    emptyCart_h2: {
+        textAlign: 'center',
+        margin: "auto auto"
     }
 })
 
 const YourCart = () => {
     const classes = useStyles()
-    const { cartItems, total,amount } = useSelector(state => state.cart)
+    const { cartItems, total, amount } = useSelector(state => state.cart)
     console.log(cartItems)
-    
+
     return (
         <div className={classes.container}>
             <div style={{ height: '80%' }}>
                 <h2 className={classes.h2}>Your Cart</h2>
                 <div className={classes.listContainer}>
                     {cartItems.map(item => <Item key={item.id} {...item} />)}
-                    {amount===0 && <h2  className={classes.emptyCart_h2}><img src={cartImg}/> IS EMPTY !</h2>}
+                    {amount === 0 && <h2 className={classes.emptyCart_h2}><img src={cartImg} alt="shopping cart"/> IS EMPTY !</h2>}
                 </div>
 
             </div>
